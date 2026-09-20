@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SRMS Login</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
+
+  <!-- Background decorations -->
+  <div class="bg-dots"></div>
+  <div class="bg-ring"></div>
+
+  <!-- Login Card -->
+  <div class="login-box">
+
+    <!-- Your original logo image -->
+    <img src="./images/login image.avif" alt="login page">
+
+    <!-- Title -->
+    <h1>Student Result Management System</h1>
+    <span class="login-subtitle">SRMS Academic Portal</span>
+
+    <div class="login-divider"></div>
+
+    <!-- Form (kept your original action & method) -->
+    <form action="/login" method="POST" id="login-form">
+
+      <!-- Role Select -->
+      <div class="input-wrapper">
+        <span class="input-icon">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+        </span>
+        <select name="role" id="role" class="input-field">
+          <option value="student">Login as Student</option>
+          <option value="admin">Login as Admin</option>
+        </select>
+      </div>
+
+      <!-- Username -->
+      <div class="input-wrapper">
+        <span class="input-icon">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+        </span>
+        <input type="text" id="username" name="username" placeholder="Enter username" class="input-field">
+      </div>
+
+      <!-- Password -->
+      <div class="input-wrapper">
+        <span class="input-icon">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+          </svg>
+        </span>
+        <input type="password" id="password" name="password" placeholder="Enter password" class="input-field">
+      </div>
+
+      <!-- Login Button -->
+      <button type="submit" class="login-btn">Login</button>
+
+    </form>
+
+    <p class="login-footer">© 2026 SRMS Academic Portal. All rights reserved.</p>
+
+  </div>
+
+  <script src="login.js"></script>
+</body>
+</html>

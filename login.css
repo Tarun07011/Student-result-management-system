@@ -1,0 +1,444 @@
+/* ====================================================
+   SRMS LOGIN PAGE — PROFESSIONAL REDESIGN
+   Theme: Deep Crimson + Warm Red + Gold Accent
+   Font: Outfit + DM Sans
+   ==================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+/* -------- CSS VARIABLES -------- */
+:root {
+  --red-deep:      #1a0000;
+  --red-mid:       #7a0a0a;
+  --red-main:      #c0392b;
+  --red-bright:    #e74c3c;
+  --red-light:     rgba(231, 76, 60, 0.15);
+  --gold:          #f39c12;
+  --gold-soft:     rgba(243, 156, 18, 0.15);
+  --white:         #ffffff;
+  --white-soft:    rgba(255, 255, 255, 0.08);
+  --white-muted:   rgba(255, 255, 255, 0.45);
+  --white-border:  rgba(255, 255, 255, 0.15);
+  --text-light:    rgba(255, 255, 255, 0.85);
+  --transition:    all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --radius:        12px;
+  --shadow:        0 25px 60px rgba(0, 0, 0, 0.5);
+}
+
+
+/* -------- GLOBAL RESET -------- */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+/* -------- BODY / BACKGROUND -------- */
+body {
+  font-family: 'DM Sans', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--red-deep);
+  position: relative;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Rich layered gradient background */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(192, 57, 43, 0.55) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(231, 76, 60, 0.3) 0%, transparent 50%),
+    radial-gradient(ellipse at 60% 80%, rgba(122, 10, 10, 0.6) 0%, transparent 55%),
+    linear-gradient(135deg, #2c0000 0%, #1a0000 50%, #0d0000 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Decorative floating circles */
+body::after {
+  content: '';
+  position: fixed;
+  top: -120px;
+  right: -120px;
+  width: 420px;
+  height: 420px;
+  border: 60px solid rgba(192, 57, 43, 0.08);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Extra decorative ring bottom-left */
+.bg-ring {
+  position: fixed;
+  bottom: -100px;
+  left: -100px;
+  width: 350px;
+  height: 350px;
+  border: 50px solid rgba(231, 76, 60, 0.06);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Subtle dot-grid texture */
+.bg-dots {
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 30px 30px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+
+/* -------- LOGIN CARD -------- */
+.login-box {
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 44px 40px 40px;
+  width: 400px;
+  border-radius: 24px;
+  border: 1px solid var(--white-border);
+  text-align: center;
+  box-shadow:
+    var(--shadow),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  animation: cardEntrance 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes cardEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Top accent bar */
+.login-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 15%;
+  right: 15%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--gold), var(--red-bright), transparent);
+  border-radius: 0 0 4px 4px;
+}
+
+
+/* -------- LOGO / ICON -------- */
+.login-box img {
+  width: 78px;
+  height: 78px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--gold);
+  box-shadow:
+    0 0 0 6px rgba(243, 156, 18, 0.12),
+    0 0 24px rgba(243, 156, 18, 0.2),
+    0 8px 20px rgba(0, 0, 0, 0.4);
+  margin-bottom: 22px;
+  transition: var(--transition);
+}
+
+.login-box img:hover {
+  transform: scale(1.06) rotate(3deg);
+  box-shadow:
+    0 0 0 8px rgba(243, 156, 18, 0.15),
+    0 0 32px rgba(243, 156, 18, 0.3),
+    0 10px 28px rgba(0, 0, 0, 0.4);
+}
+
+
+/* -------- TITLE -------- */
+.login-box h1 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--white);
+  letter-spacing: 0.5px;
+  line-height: 1.3;
+  margin-bottom: 6px;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Subtitle below title */
+.login-subtitle {
+  font-size: 12px;
+  color: var(--white-muted);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-bottom: 28px;
+  display: block;
+}
+
+/* Divider line */
+.login-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--white-border), transparent);
+  margin-bottom: 26px;
+}
+
+
+/* -------- INPUT FIELDS -------- */
+.input-wrapper {
+  position: relative;
+  margin-bottom: 14px;
+  text-align: left;
+}
+
+.input-wrapper .input-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--white-muted);
+  font-size: 15px;
+  pointer-events: none;
+  transition: color 0.25s ease;
+}
+
+.input-field,
+select.input-field {
+  width: 100%;
+  height: 48px;
+  padding: 12px 16px 12px 42px;
+  border: 1.5px solid var(--white-border);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.07);
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  outline: none;
+  transition: var(--transition);
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.input-field::placeholder {
+  color: var(--white-muted);
+  font-size: 13px;
+}
+
+.input-field:focus,
+select.input-field:focus {
+  border-color: var(--gold);
+  background: rgba(255, 255, 255, 0.11);
+  box-shadow: 0 0 0 4px rgba(243, 156, 18, 0.12);
+}
+
+.input-wrapper:focus-within .input-icon {
+  color: var(--gold);
+}
+
+/* Select dropdown arrow */
+select.input-field {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.5)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+}
+
+select.input-field option {
+  background: #3a0000;
+  color: white;
+}
+
+
+/* -------- LOGIN BUTTON -------- */
+.login-btn {
+  width: 100%;
+  padding: 14px;
+  margin-top: 8px;
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, var(--gold) 0%, #e67e22 100%);
+  color: #1a0000;
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(243, 156, 18, 0.3);
+}
+
+/* Shimmer effect */
+.login-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+  transition: left 0.5s ease;
+}
+
+.login-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(243, 156, 18, 0.4);
+  background: linear-gradient(135deg, #f5a623 0%, var(--gold) 100%);
+}
+
+.login-btn:hover::before {
+  left: 100%;
+}
+
+.login-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 12px rgba(243, 156, 18, 0.25);
+}
+
+
+/* -------- FOOTER TEXT -------- */
+.login-footer {
+  margin-top: 22px;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.25);
+  letter-spacing: 0.5px;
+}
+
+
+/* ================================================
+   RESPONSIVE — TABLET (max 768px)
+   ================================================ */
+@media (max-width: 768px) {
+
+  .login-box {
+    width: 90%;
+    max-width: 420px;
+    padding: 36px 30px 32px;
+    border-radius: 20px;
+  }
+
+  .login-box h1 {
+    font-size: 18px;
+  }
+
+  .login-subtitle {
+    font-size: 11px;
+  }
+
+  .input-field,
+  select.input-field {
+    height: 46px;
+    font-size: 13px;
+  }
+
+  .login-btn {
+    padding: 13px;
+    font-size: 14px;
+  }
+}
+
+
+/* ================================================
+   RESPONSIVE — MOBILE (max 480px)
+   ================================================ */
+@media (max-width: 480px) {
+
+  body {
+    align-items: center;
+    padding: 20px 0;
+  }
+
+  .login-box {
+    width: 92%;
+    padding: 28px 20px 26px;
+    border-radius: 16px;
+  }
+
+  .login-box img {
+    width: 62px;
+    height: 62px;
+    margin-bottom: 16px;
+  }
+
+  .login-box h1 {
+    font-size: 16px;
+    letter-spacing: 0;
+  }
+
+  .login-subtitle {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    margin-bottom: 20px;
+  }
+
+  .login-divider {
+    margin-bottom: 18px;
+  }
+
+  .input-wrapper {
+    margin-bottom: 12px;
+  }
+
+  .input-field,
+  select.input-field {
+    height: 44px;
+    font-size: 13px;
+    padding: 10px 14px 10px 38px;
+  }
+
+  .input-wrapper .input-icon {
+    left: 12px;
+  }
+
+  .login-btn {
+    padding: 12px;
+    font-size: 14px;
+    margin-top: 6px;
+  }
+
+  .login-footer {
+    font-size: 10px;
+    margin-top: 16px;
+  }
+
+  /* Hide decorative rings on very small screens */
+  .bg-ring {
+    display: none;
+  }
+}
+
+
+/* ================================================
+   RESPONSIVE — SMALL MOBILE (max 360px)
+   ================================================ */
+@media (max-width: 360px) {
+
+  .login-box {
+    width: 95%;
+    padding: 24px 16px;
+  }
+
+  .login-box h1 {
+    font-size: 14px;
+  }
+
+  .login-box img {
+    width: 55px;
+    height: 55px;
+  }
+}
